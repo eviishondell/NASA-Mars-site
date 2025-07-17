@@ -1,0 +1,435 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+  background-color: #000;
+  color: #fff;
+  line-height: 1.6;
+}
+
+.homepage {
+  min-height: 100vh;
+  background-color: #000;
+  color: #fff;
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 48px;
+}
+
+.logo {
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 48px;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 300;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #fb923c;
+}
+
+.mobile-menu {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px 48px;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.hero-title {
+  font-size: 112px;
+  font-weight: 100;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+  line-height: 1.1;
+}
+
+.hero-subtitle {
+  font-size: 48px;
+  font-weight: 100;
+  color: #d1d5db;
+  margin-bottom: 80px;
+  letter-spacing: 1px;
+}
+
+.mars-container {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  margin: 0 auto 128px;
+}
+
+.mars-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.mars-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(251, 146, 60, 0.1) 0%, transparent 70%);
+  filter: blur(40px);
+  z-index: -1;
+}
+
+/* Mission Statement */
+.mission {
+  text-align: center;
+  padding: 32px 16px 64px;
+}
+
+.mission-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.mission-title {
+  font-size: 80px;
+  font-weight: 100;
+  margin-bottom: 16px;
+  letter-spacing: 1px;
+  line-height: 1.1;
+}
+
+.mission-subtitle {
+  font-size: 80px;
+  font-weight: 100;
+  margin-bottom: 48px;
+  letter-spacing: 1px;
+  line-height: 1.1;
+}
+
+.mission-description {
+  font-size: 32px;
+  font-weight: 100;
+  color: #d1d5db;
+  max-width: 800px;
+  margin: 0 auto;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+}
+
+/* Gradient Section */
+.gradient-section {
+  position: relative;
+  padding: 64px 16px 96px;
+  margin-top: 64px;
+  background: linear-gradient(180deg, transparent 0%, rgba(154, 52, 18, 0.2) 50%, rgba(127, 29, 29, 0.3) 100%);
+}
+
+.cards-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 32px;
+}
+
+.card {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 48px;
+  border: 1px solid rgba(75, 85, 99, 0.5);
+  transition: border-color 0.3s ease;
+}
+
+.card:hover {
+  border-color: rgba(251, 146, 60, 0.3);
+}
+
+.card-image {
+  aspect-ratio: 1;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 12px;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(55, 65, 81, 0.5);
+}
+
+.placeholder {
+  color: #6b7280;
+  font-size: 96px;
+  font-weight: 100;
+}
+
+.card-title {
+  font-size: 48px;
+  font-weight: 100;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+/* Dashboard Preview */
+.dashboard-preview {
+  padding: 80px 16px 128px;
+}
+
+.ipad-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.ipad-image {
+  width: 100%;
+  height: auto;
+  border-radius: 24px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.ipad-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.1) 100%);
+  border-radius: 24px;
+}
+
+/* Responsive Design */
+@media (min-width: 640px) {
+  .nav-links {
+    display: flex;
+  }
+  
+  .mobile-menu {
+    display: none;
+  }
+}
+
+@media (max-width: 639px) {
+  .nav-links {
+    display: none;
+  }
+  
+  .mobile-menu {
+    display: block;
+  }
+  
+  .nav {
+    padding: 16px 24px;
+  }
+  
+  .hero-title {
+    font-size: 48px;
+  }
+  
+  .hero-subtitle {
+    font-size: 24px;
+    margin-bottom: 40px;
+  }
+  
+  .mars-container {
+    width: 256px;
+    height: 256px;
+    margin-bottom: 64px;
+  }
+  
+  .mission-title,
+  .mission-subtitle {
+    font-size: 36px;
+  }
+  
+  .mission-description {
+    font-size: 18px;
+  }
+  
+  .card-title {
+    font-size: 24px;
+  }
+  
+  .placeholder {
+    font-size: 48px;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 96px;
+  }
+  
+  .hero-subtitle {
+    font-size: 32px;
+  }
+  
+  .mars-container {
+    width: 384px;
+    height: 384px;
+  }
+  
+  .mission-title,
+  .mission-subtitle {
+    font-size: 64px;
+  }
+  
+  .mission-description {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cards-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+  }
+  
+  .hero-title {
+    font-size: 112px;
+  }
+  
+  .hero-subtitle {
+    font-size: 48px;
+  }
+  
+  .mars-container {
+    width: 500px;
+    height: 500px;
+  }
+  
+  .mission-title,
+  .mission-subtitle {
+    font-size: 80px;
+  }
+  
+  .mission-description {
+    font-size: 32px;
+  }
+}
+/* Additional styles for individual pages - ADD THIS TO YOUR EXISTING index.css */
+
+.page {
+  min-height: 100vh;
+  background-color: #000;
+  color: #fff;
+}
+
+.page-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.page-title {
+  font-size: 96px;
+  font-weight: 100;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+  line-height: 1.1;
+}
+
+.page-subtitle {
+  font-size: 24px;
+  font-weight: 300;
+  color: #d1d5db;
+  letter-spacing: 1px;
+}
+
+.content-placeholder {
+  text-align: center;
+  padding: 80px 24px;
+  border: 2px dashed #374151;
+  border-radius: 12px;
+  background: rgba(17, 24, 39, 0.3);
+}
+
+.content-placeholder p {
+  font-size: 18px;
+  color: #9ca3af;
+  font-weight: 300;
+}
+
+/* Active navigation link styling */
+.nav-link.active {
+  color: #fb923c;
+  font-weight: 400;
+}
+
+/* Responsive adjustments for pages */
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 48px;
+  }
+  
+  .page-subtitle {
+    font-size: 18px;
+  }
+  
+  .page-content {
+    padding: 40px 16px;
+  }
+  
+  .page-header {
+    margin-bottom: 40px;
+  }
+  
+  .content-placeholder {
+    padding: 40px 16px;
+  }
+}
+
+/* React Router Link styling */
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 300;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #fb923c;
+}
+
+.nav-link.active {
+  color: #fb923c;
+  font-weight: 400;
+}
