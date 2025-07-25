@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import './index.css';
 import nasaLogo from './assets/nasa-logo.png';
 import marsImage from './assets/mars.webp';
@@ -11,36 +11,27 @@ import AboutPage from './components/AboutPage';
 import researchImage from './assets/research.jpg';
 import designImage from './assets/design.jpg';
 import technicalImage from './assets/technical.jpg';
+import scenariokit from './assets/scenariokit.png';
 
 const PrototypeSlider = () => {
+  const navigate = useNavigate();
+  
   const prototypes = [
     {
       id: 1,
       image: ipadPreview,
       title: 'Mission Anomaly Response System',
       description: 'Real-time monitoring dashboard for Mars mission critical events and system anomalies.',
-      buttonText: 'Explore Dashboard'
+      buttonText: 'Explore Dashboard',
+      navigationPath: '/design'
     },
     {
       id: 2,
-      image: ipadPreview,
-      title: 'Crew Health Monitoring',
-      description: 'Comprehensive health tracking system for astronaut wellness during long-duration missions.',
-      buttonText: 'Explore Health System'
-    },
-    {
-      id: 3,
-      image: ipadPreview,
-      title: 'Resource Management Hub',
-      description: 'Advanced resource allocation and consumption tracking for optimal mission efficiency.',
-      buttonText: 'Explore Resources'
-    },
-    {
-      id: 4,
-      image: ipadPreview,
-      title: 'Communication Interface',
-      description: 'Secure communication platform for Mars-Earth coordination and crew collaboration.',
-      buttonText: 'Explore Communication'
+      image: scenariokit,
+      title: 'ScenarioKit',
+      description: 'LLM-powered scenario generation tool for simulating mission anomalies.',
+      buttonText: 'Explore ScenarioKit',
+      navigationPath: '/technical'
     }
   ];
 
@@ -58,6 +49,13 @@ const PrototypeSlider = () => {
     setCurrentSlide(index);
   };
 
+  const handleExploreClick = () => {
+    const currentPrototype = prototypes[currentSlide];
+    if (currentPrototype.navigationPath) {
+      navigate(currentPrototype.navigationPath);
+    }
+  };
+
   return (
     <div className="prototype-slider">
       <div className="slider-content">
@@ -72,7 +70,15 @@ const PrototypeSlider = () => {
         <div className="prototype-info">
           <h3 className="prototype-title">{prototypes[currentSlide].title}</h3>
           <p className="prototype-description">{prototypes[currentSlide].description}</p>
-          <button className="prototype-explore-btn">
+          <button 
+            className="prototype-explore-btn"
+            onClick={handleExploreClick}
+            disabled={!prototypes[currentSlide].navigationPath}
+            style={{
+              opacity: prototypes[currentSlide].navigationPath ? 1 : 0.6,
+              cursor: prototypes[currentSlide].navigationPath ? 'pointer' : 'default'
+            }}
+          >
             {prototypes[currentSlide].buttonText}
           </button>
         </div>
