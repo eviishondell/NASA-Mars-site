@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import '../index.css';
+import nasaLogo from '../assets/nasa-logo.png';
 
 const AboutPage = () => {
   const location = useLocation();
@@ -10,8 +11,8 @@ const AboutPage = () => {
       {/* Navigation */}
       <nav className="nav">
         <div className="logo">
-          logo
-        </div>
+                  <img src={nasaLogo} alt="NASA" className="nasa-logo" />
+                </div>
         <div className="nav-links">
           <Link to="/" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}>Home</Link>
           <Link to="/research" className={`nav-link ${location.pathname === '/research' ? 'active' : ''}`}>Research</Link>

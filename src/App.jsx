@@ -1,20 +1,117 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './index.css';
+import nasaLogo from './assets/nasa-logo.png';
 import marsImage from './assets/mars.webp';
 import ipadPreview from './assets/ipad-preview.png';
 import ResearchPage from './components/ResearchPage';
 import DesignPage from './components/DesignPage';
 import TechnicalPage from './components/TechnicalPage';
 import AboutPage from './components/AboutPage';
+import researchImage from './assets/research.jpg';
+import designImage from './assets/design.jpg';
+import technicalImage from './assets/technical.jpg';
+
+const PrototypeSlider = () => {
+  const prototypes = [
+    {
+      id: 1,
+      image: ipadPreview,
+      title: 'Mission Anomaly Response System',
+      description: 'Real-time monitoring dashboard for Mars mission critical events and system anomalies.',
+      buttonText: 'Explore Dashboard'
+    },
+    {
+      id: 2,
+      image: ipadPreview,
+      title: 'Crew Health Monitoring',
+      description: 'Comprehensive health tracking system for astronaut wellness during long-duration missions.',
+      buttonText: 'Explore Health System'
+    },
+    {
+      id: 3,
+      image: ipadPreview,
+      title: 'Resource Management Hub',
+      description: 'Advanced resource allocation and consumption tracking for optimal mission efficiency.',
+      buttonText: 'Explore Resources'
+    },
+    {
+      id: 4,
+      image: ipadPreview,
+      title: 'Communication Interface',
+      description: 'Secure communication platform for Mars-Earth coordination and crew collaboration.',
+      buttonText: 'Explore Communication'
+    }
+  ];
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % prototypes.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + prototypes.length) % prototypes.length);
+  };
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+  };
+
+  return (
+    <div className="prototype-slider">
+      <div className="slider-content">
+        <div className="prototype-image-container">
+          <img 
+            src={prototypes[currentSlide].image} 
+            alt={prototypes[currentSlide].title}
+            className="prototype-image"
+          />
+        </div>
+        
+        <div className="prototype-info">
+          <h3 className="prototype-title">{prototypes[currentSlide].title}</h3>
+          <p className="prototype-description">{prototypes[currentSlide].description}</p>
+          <button className="prototype-explore-btn">
+            {prototypes[currentSlide].buttonText}
+          </button>
+        </div>
+      </div>
+      
+      <div className="slider-controls">
+        <button className="slider-arrow slider-arrow-left" onClick={prevSlide}>
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        
+        <button className="slider-arrow slider-arrow-right" onClick={nextSlide}>
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+      
+      <div className="slider-pagination">
+        {prototypes.map((_, index) => (
+          <button
+            key={index}
+            className={`pagination-dot ${index === currentSlide ? 'active' : ''}`}
+            onClick={() => goToSlide(index)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const HomePage = () => {
   return (
     <div className="homepage">
       {/* Navigation */}
       <nav className="nav">
-        <div className="logo">
-          logo
+      <div className="logo">
+          <img src={nasaLogo} alt="NASA" className="nasa-logo" />
         </div>
         <div className="nav-links">
           <Link to="/" className="nav-link">Home</Link>
@@ -33,13 +130,13 @@ const HomePage = () => {
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-content">
-          <h1 className="hero-title">Whatever we call it</h1>
+          <h1 className="hero-title">Mission Anomaly Response System</h1>
           <p className="hero-subtitle">Team Olympus</p>
           
           {/* Mars Image */}
           <div className="mars-container">
-            <img 
-              src={marsImage} 
+            <img
+              src={marsImage}
               alt="Mars"
               className="mars-image"
             />
@@ -63,37 +160,35 @@ const HomePage = () => {
       <section className="gradient-section">
         {/* Feature Cards */}
         <div className="cards-container">
-          <div className="card">
+          <Link to="/research" className="card">
             <div className="card-image">
-              <div className="placeholder">□</div>
+              <img src={researchImage} alt="Research" className="card-img" />
             </div>
             <h4 className="card-title">Research</h4>
-          </div>
+          </Link>
 
-          <div className="card">
+          <Link to="/design" className="card">
             <div className="card-image">
-              <div className="placeholder">□</div>
+              <img src={designImage} alt="Design" className="card-img" />
             </div>
             <h4 className="card-title">Design</h4>
-          </div>
+          </Link>
 
-          <div className="card">
+          <Link to="/technical" className="card">
             <div className="card-image">
-              <div className="placeholder">□</div>
+              <img src={technicalImage} alt="Technical" className="card-img" />
             </div>
             <h4 className="card-title">Technical</h4>
-          </div>
+          </Link>
         </div>
       </section>
 
-      {/* iPad Dashboard Preview */}
-      <section className="dashboard-preview">
-        <div className="ipad-container">
-          <img 
-            src={ipadPreview}
-            alt="iPad Dashboard Preview"
-            className="ipad-image"
-          />
+
+      {/* Our Product Section */}
+      <section className="product-section">
+        <div className="product-content">
+          <h2 className="product-title">Our Product</h2>
+          <PrototypeSlider />
         </div>
       </section>
     </div>
