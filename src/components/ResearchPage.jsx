@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import '../index.css';
 import nasaLogo from '../assets/nasa-logo.png';
-import darkModeVideo from '../assets/Dark Mode V3 Screen Recording.mp4';
+import darkModeVideo from '../assets/Dark_Mode_V3_Compressed.mp4';
 
 const ResearchPage = () => {
   const location = useLocation();

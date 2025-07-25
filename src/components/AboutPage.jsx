@@ -2,7 +2,12 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import '../index.css';
 import nasaLogo from '../assets/nasa-logo.png';
-
+import riya from '../assets/riya.png';
+import julia from '../assets/julia.jpeg';
+import carter from '../assets/carter.png';
+import evolone from '../assets/evolone.jpeg';
+import chance from '../assets/chance.jpeg';
+import group from '../assets/group.JPG';
 const AboutPage = () => {
   const location = useLocation();
 
@@ -11,31 +16,31 @@ const AboutPage = () => {
     {
       id: 1,
       name: "Chance Castaneda",
-      image: null, // Replace with actual image import
+      image: chance, // Replace with actual image import
       linkedinUrl: "https://www.linkedin.com/in/chance-castaneda/"
     },
     {
       id: 2,
       name: "Evolone Layne",
-      image: null, // Replace with actual image import
+      image: evolone, // Replace with actual image import
       linkedinUrl: "https://www.linkedin.com/in/evolonelayne/"
     },
     {
       id: 3,
       name: "Julia Liu",
-      image: null, // Replace with actual image import
+      image: julia, // Replace with actual image import
       linkedinUrl: "https://www.linkedin.com/in/liu--julia/"
     },
     {
       id: 4,
       name: "Riya Mody",
-      image: null, // Replace with actual image import
+      image: riya, // Replace with actual image import
       linkedinUrl: "https://www.linkedin.com/in/riyamody/"
     },
     {
       id: 5,
       name: "Carter Owen",
-      image: null, // Replace with actual image import
+      image: carter, // Replace with actual image import
       linkedinUrl: "https://www.linkedin.com/in/carterowen-/"
     }
   ];
@@ -74,6 +79,14 @@ const AboutPage = () => {
               training systems. Our M.A.R.S. platform combines cutting-edge technology with human-centered 
               design to prepare astronauts for the challenges of deep space exploration.
             </p>
+                        {/* Group Photo */}
+                        <div className="group-photo-container">
+              <img 
+                src={group} 
+                alt="Team Olympus Group Photo" 
+                className="group-photo"
+              />
+            </div>
           </div>
         </div>
 

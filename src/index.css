@@ -3009,6 +3009,27 @@ body {
   margin-bottom: 12px;
 }
 
+/* Group Photo */
+.group-photo-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.group-photo {
+  max-width: 700px;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(75, 85, 99, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.group-photo:hover {
+  transform: scale(1.02);
+}
+
 .slider-progress {
   position: absolute;
   height: 100%;
