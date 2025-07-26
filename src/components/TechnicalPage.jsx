@@ -8,6 +8,8 @@ import anthropicIcon from '../assets/anthropic.png';
 import placeholderMulti from '../assets/late-pair.png';
 import nasaLogo from '../assets/nasa-logo.png';
 import scenariokit from '../assets/scenariokit.png';
+import nasa from '../assets/nasa.svg';
+import cmu from '../assets/cmu.png';
 
 const JsonTypingAnimation = () => {
   const jsonCode = `{
@@ -463,7 +465,11 @@ const TechnicalPage = () => {
           </div>
         </section>
         <section className="tech-footer">
-          <p className="footer-text">Integrated with Linear for agile development tracking</p>
+          <div className="footer-content">
+            <p className="footer-text">©2025 NASA x CMU MHCI, Team Olympus</p>
+            <img src={nasa} alt="NASA" className="footer-logo" />
+            <img src={cmu} alt="CMU" className="footer-logo" />
+          </div>
         </section>
       </main>
     </div>

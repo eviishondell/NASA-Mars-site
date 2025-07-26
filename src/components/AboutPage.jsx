@@ -8,6 +8,8 @@ import carter from '../assets/carter.png';
 import evolone from '../assets/evolone.jpeg';
 import chance from '../assets/chance.jpeg';
 import group from '../assets/group.JPG';
+import nasa from '../assets/nasa.svg';
+import cmu from '../assets/cmu.png';
 const AboutPage = () => {
   const location = useLocation();
 
@@ -133,6 +135,13 @@ const AboutPage = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+        <section className="tech-footer">
+          <div className="footer-content">
+            <p className="footer-text">©2025 NASA x CMU MHCI, Team Olympus</p>
+            <img src={nasa} alt="NASA" className="footer-logo" />
+            <img src={cmu} alt="CMU" className="footer-logo" />
           </div>
         </section>
       </main>

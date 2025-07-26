@@ -3,6 +3,8 @@ import { Link, useLocation } from 'react-router-dom';
 import '../index.css';
 import nasaLogo from '../assets/nasa-logo.png';
 import darkModeVideo from '../assets/Dark_Mode_V3_Compressed.mp4';
+import nasa from '../assets/nasa.svg';
+import cmu from '../assets/cmu.png';
 
 const ResearchPage = () => {
   const location = useLocation();
@@ -222,6 +224,13 @@ const ResearchPage = () => {
                 <li>System lists sorted by criticality and power draw</li>
               </ul>
             </div>
+          </div>
+        </section>
+        <section className="tech-footer">
+          <div className="footer-content">
+            <p className="footer-text">©2025 NASA x CMU MHCI, Team Olympus</p>
+            <img src={nasa} alt="NASA" className="footer-logo" />
+            <img src={cmu} alt="CMU" className="footer-logo" />
           </div>
         </section>
       </main>

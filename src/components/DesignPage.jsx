@@ -11,6 +11,8 @@ import lateCharts from '../assets/late-charts.png';
 import lateCollapse from '../assets/late-collapse.png';
 import latePair from '../assets/late-pair.png';
 import scenariokit from '../assets/scenariokit.png';
+import nasa from '../assets/nasa.svg';
+import cmu from '../assets/cmu.png';
 
 const AnimatedNumber = ({ endValue, duration = 2000, label }) => {
   const [currentValue, setCurrentValue] = useState(0);
@@ -426,8 +428,12 @@ const DesignPage = () => {
         </section>
 
         {/* Footer */}
-        <section className="design-footer">
-          <p className="footer-text">Design research conducted in collaboration with NASA Ames Human-Computer Interaction team</p>
+        <section className="tech-footer">
+          <div className="footer-content">
+            <p className="footer-text">©2025 NASA x CMU MHCI, Team Olympus</p>
+            <img src={nasa} alt="NASA" className="footer-logo" />
+            <img src={cmu} alt="CMU" className="footer-logo" />
+          </div>
         </section>
       </main>
     </div>

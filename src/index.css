@@ -1452,6 +1452,14 @@ body {
   margin-top: 80px;
 }
 
+.home-footer {
+  text-align: center;
+  padding: 40px 24px;
+  width: 1200px;
+  border-top: 1px solid #374151;
+  margin: 80px auto 40px auto;
+}
+
 .footer-text {
   font-size: 16px;
   font-weight: 300;
@@ -2147,12 +2155,17 @@ body {
   letter-spacing: 0.3px;
 }
 
-/* Footer */
 .tech-footer {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 40px 0;
   border-top: 1px solid #374151;
-  margin-top: 80px;
+}
+
+.footer-content {
+  display: inline-block;
+  align-items: center;
 }
 
 .footer-text {
@@ -2160,6 +2173,19 @@ body {
   font-weight: 300;
   color: #6b7280;
   letter-spacing: 0.5px;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.footer-logo {
+  position: relative; 
+  height: 24px; /* Adjust height as needed */
+  width: auto; /* Maintain aspect ratio */
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+  top: 8px;
+  margin-left: 8px;
 }
 
 /* ScenarioKit Framework Section */
@@ -3641,7 +3667,7 @@ body {
 
 /* About Page Styles */
 .about-content {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 40px 24px;
 }
@@ -3790,9 +3816,15 @@ body {
 
 /* Design Page Styles - Following Technical Page Pattern */
 
+.design-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
 .design-content img {
   display: block;
   margin: 0 auto;
+  padding: 40px 24px;
 }
 
 /* Header Section */
@@ -4314,21 +4346,6 @@ body {
 }
 .tension-description:last-child {
   margin-bottom: 0;
-}
-
-/* Footer */
-.design-footer {
-  text-align: center;
-  padding: 40px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  margin-top: 60px;
-}
-
-.footer-text {
-  font-size: 14px;
-  color: #858585;
-  font-weight: 300;
-  letter-spacing: 0.3px;
 }
 
 /* Responsive Design */

@@ -12,6 +12,8 @@ import researchImage from './assets/research.jpg';
 import designImage from './assets/design.jpg';
 import technicalImage from './assets/technical.jpg';
 import scenariokit from './assets/scenariokit.png';
+import nasa from './assets/nasa.svg';
+import cmu from './assets/cmu.png';
 
 const PrototypeSlider = () => {
   const navigate = useNavigate();
@@ -196,6 +198,14 @@ const HomePage = () => {
         <div className="product-content">
           <h2 className="product-title">Our Product</h2>
           <PrototypeSlider />
+        </div>
+      </section>
+      {/* Footer Section */}
+      <section className="home-footer">
+        <div className="footer-content">
+          <p className="footer-text">©2025 NASA x CMU MHCI, Team Olympus</p>
+          <img src={nasa} alt="NASA" className="footer-logo" />
+          <img src={cmu} alt="CMU" className="footer-logo" />
         </div>
       </section>
     </div>
