@@ -1,4 +1,4 @@
-import React , { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import '../index.css';
 import nasaLogo from '../assets/nasa-logo.png';
@@ -12,43 +12,113 @@ import lateCollapse from '../assets/late-collapse.png';
 import latePair from '../assets/late-pair.png';
 import scenariokit from '../assets/scenariokit.png';
 
+const AnimatedNumber = ({ endValue, duration = 2000, label }) => {
+  const [currentValue, setCurrentValue] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const numberRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true);
+          animateNumber();
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (numberRef.current) {
+      observer.observe(numberRef.current);
+    }
+
+    return () => {
+      if (numberRef.current) {
+        observer.unobserve(numberRef.current);
+      }
+    };
+  }, [isVisible]);
+
+  const animateNumber = () => {
+    const startTime = Date.now();
+    const startValue = 0;
+
+    const updateNumber = () => {
+      const currentTime = Date.now();
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+
+      // Easing function for smooth animation
+      const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+      const current = Math.floor(startValue + (endValue - startValue) * easeOutCubic);
+
+      setCurrentValue(current);
+
+      if (progress < 1) {
+        requestAnimationFrame(updateNumber);
+      } else {
+        setCurrentValue(endValue);
+      }
+    };
+
+    requestAnimationFrame(updateNumber);
+  };
+
+  return (
+    <div className="stat-item" ref={numberRef}>
+      <div className={`stat-number ${isVisible ? 'animate' : ''}`}>
+        {currentValue}
+      </div>
+      <div className="stat-label">{label}</div>
+    </div>
+  );
+};
+
+const PrototypingStats = () => {
+  return (
+    <div className="prototyping-stats">
+      <AnimatedNumber endValue={9} label="Prototype Rounds" />
+      <AnimatedNumber endValue={33} label="Test Participants" />
+      <AnimatedNumber endValue={11} label="Deep Space Experts" />
+    </div>
+  );
+};
 
 const PrototypeCarousel = () => {
-  // Add your prototype images here - replace with actual image imports
   const prototypeImages = [
     {
       id: 1,
-      image: earlyCar, // Replace with actual image import
+      image: earlyCar,
       title: 'Early Wireframes',
       description: 'Initial concept sketches and user flow mapping'
     },
     {
       id: 2,
-      image: midWidget, // Replace with actual image import
+      image: midWidget,
       title: 'Mid-Fidelity Prototype 1',
       description: 'First interactive SwiftUI prototype focusing on watch interface'
     },
     {
       id: 3,
-      image: schematic, // Replace with actual image import
+      image: schematic,
       title: 'Mid-Fidelity Prototype 2',
       description: 'iPad dashboard with basic system schematics'
     },
     {
       id: 4,
-      image: lateCharts, // Replace with actual image import
+      image: lateCharts,
       title: 'User Testing Session',
       description: 'Testing with deep space experts and collecting feedback'
     },
     {
       id: 5,
-      image: lateCollapse, // Replace with actual image import
+      image: lateCollapse,
       title: 'High-Fidelity Prototype',
       description: 'Refined interface with improved information hierarchy'
     },
     {
       id: 6,
-      image: latePair, // Replace with actual image import
+      image: latePair,
       title: 'Final Design System',
       description: 'Complete multi-device experience with attention guidance'
     }
@@ -207,29 +277,14 @@ const DesignPage = () => {
         </section>
 
         {/* Prototyping Process */}
-        {/* Prototyping Process - Updated with Carousel */}
         <section className="prototyping-section">
           <h2 className="section-title">Iterative Prototyping & Testing</h2>
           
-          <div className="prototyping-stats">
-            <div className="stat-item">
-              <div className="stat-number">9</div>
-              <div className="stat-label">Prototype Rounds</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-number">33</div>
-              <div className="stat-label">Test Participants</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-number">11</div>
-              <div className="stat-label">Deep Space Experts</div>
-            </div>
-          </div>
+          <PrototypingStats />
           
           {/* Replace the static image with the carousel */}
           <div className="prototyping-image-container">
             <PrototypeCarousel />
-            {/* <p className="image-caption">Six mid-fidelity and three high-fidelity prototypes coded in SwiftUI</p> */}
           </div>
           
           <p className="prototyping-description">
@@ -311,11 +366,6 @@ const DesignPage = () => {
             <p className="tensions-text">
               Throughout our prototyping and testing, we encountered several recurring tensions—tradeoffs that shaped nearly every design decision. We believe these tensions will continue to define the design space for autonomous situational awareness systems:
             </p>
-          </div>
-          
-          <div className="tensions-image-container">
-            <img src={null} alt="Design Tensions Visualization" className="tensions-image" />
-            <p className="image-caption">Key design tensions that shaped our decision-making process</p>
           </div>
           
           <div className="tensions-grid">
