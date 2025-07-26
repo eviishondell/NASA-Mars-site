@@ -5,9 +5,10 @@ import swiftLogo from '../assets/swift.png';
 import xcodeLogo from '../assets/xcode.png';
 import ipadPreview from '../assets/ipad-preview.png';
 import anthropicIcon from '../assets/anthropic.png';
-import placeholderMulti from '../assets/placeholder-multi.png';
+import placeholderMulti from '../assets/late-pair.png';
 import nasaLogo from '../assets/nasa-logo.png';
 import scenariokit from '../assets/scenariokit.png';
+
 const JsonTypingAnimation = () => {
   const jsonCode = `{
   "model": "claude-3-sonnet-20240229",
@@ -168,7 +169,7 @@ const TechnicalPage = () => {
               <div className="feature-card">
                 <h4 className="feature-title">Time-to-Effect Controls</h4>
                 <p className="feature-description">
-                  Implemented dynamic time compression allowing users to set scenario urgency from 15 minutes to 8 hours. 
+                  Implemented dynamic time compression allowing users to set scenario urgency from 15 minutes to 60 minutes. 
                   The slider interface controls how quickly events escalate, affecting crew decision-making pressure and system response requirements.
                 </p>
               </div>
@@ -186,7 +187,7 @@ const TechnicalPage = () => {
           <div className="scenariokit-images">
             <div className="image-row">
               <div className="scenario-image">
-                <img src={scenariokit} alt="Scenario Generation Interface" className="scenario-img" />
+                <img src={scenariokit} alt="Scenario Generation Interface" className="scenario-img" style={{border: 'none', boxShadow: 'none'}} />
                 <p className="image-caption">Dynamic scenario generation with time-to-effect slider and anomaly type selection</p>
               </div>
             </div>
@@ -276,13 +277,13 @@ const TechnicalPage = () => {
                 <h4 className="config-card-title">Time-to-Effect Slider</h4>
                 <div className="slider-demo">
                   <div className="slider-track">
-                    <div className="slider-progress" style={{width: '60%'}}></div>
-                    <div className="slider-thumb"></div>
+                    <div className="slider-progress" style={{width: '49%'}}></div>
+                    <div className="slider-thumb" style={{left: 'calc(49% - 8px)'}}></div>
                   </div>
                   <div className="slider-labels">
                     <span>15 min</span>
-                    <span className="current-value">30 min</span>
-                    <span>8 hours</span>
+                    <span className="current-value">37 min</span>
+                    <span>60 min</span>
                   </div>
                 </div>
                 <p className="config-desc">
@@ -382,6 +383,22 @@ const TechnicalPage = () => {
             scientifically-accurate off-nominal events that challenge astronaut decision-making skills.
           </p>
           
+          <div style={{textAlign: 'center', width: '100%', margin: '2rem 0'}}>
+            <a 
+              href="https://docs.anthropic.com/en/api/getting-started" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="anthropic-docs-button"
+              style={{display: 'inline-block'}}
+              onClick={(e) => {
+                console.log('Anthropic API docs link clicked');
+                window.open('https://docs.anthropic.com/en/api/getting-started', '_blank');
+              }}
+            >
+              View API Documentation
+            </a>
+          </div>
+          
           <div className="api-workflow">
             <div className="workflow-step">
               <div className="step-icon">1</div>
@@ -416,50 +433,35 @@ const TechnicalPage = () => {
             </div>
           </div>
           
-          <a 
-            href="https://docs.anthropic.com/en/api/getting-started" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="anthropic-docs-button"
-            onClick={(e) => {
-              console.log('Anthropic API docs link clicked');
-              window.open('https://docs.anthropic.com/en/api/getting-started', '_blank');
-            }}
-          >
-            View API Documentation
-          </a>
-          
           <div className="json-placeholder">
             <JsonTypingAnimation />
           </div>
         </section>
 
-        {/* Performance & Optimization */}
+        {/* Design & Optimization */}
         <section className="performance-section">
-          <h2 className="performance-title">Performance & Optimization</h2>
+          <h2 className="performance-title">Design & Optimization</h2>
           
           <div className="performance-metrics">
             <div className="metric-card">
-            <div className="metric-number">&lt;200ms</div>
-              <div className="metric-label">API Response Time</div>
-              <div className="metric-desc">Streaming responses ensure rapid dashboard updates</div>
+              <div className="metric-number">11"</div>
+              <div className="metric-label">iPad Pro Optimized</div>
+              <div className="metric-desc">Interface designed specifically for 11-inch iPad Pro display</div>
             </div>
             
             <div className="metric-card">
-              <div className="metric-number">60 FPS</div>
-              <div className="metric-label">Chart Animation</div>
-              <div className="metric-desc">Smooth telemetry visualization with Core Animation</div>
+              <div className="metric-number">Dark Mode</div>
+              <div className="metric-label">Mission Environment</div>
+              <div className="metric-desc">Reduces eye strain during extended Mars mission simulations</div>
             </div>
             
             <div className="metric-card">
-              <div className="metric-number">99.9%</div>
-              <div className="metric-label">Offline Capability</div>
-              <div className="metric-desc">Local scenario caching for mission-critical reliability</div>
+              <div className="metric-number">Touch First</div>
+              <div className="metric-label">Gesture Controls</div>
+              <div className="metric-desc">Intuitive multi-touch interactions for high-pressure scenarios</div>
             </div>
           </div>
         </section>
-
-        {/* Footer */}
         <section className="tech-footer">
           <p className="footer-text">Integrated with Linear for agile development tracking</p>
         </section>

@@ -3,7 +3,5 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  server: {
-    open: '/usr/bin/open -a Safari'
-  }
+  base: process.env.NODE_ENV === 'production' ? '/NASA-Mars-site/' : '/',
 })

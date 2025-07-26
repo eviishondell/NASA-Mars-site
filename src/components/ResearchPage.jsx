@@ -100,7 +100,7 @@ const ResearchPage = () => {
         {/* Video Section */}
         <section className="video-section">
           <h2 className="video-title">User Testing Insights</h2>
-          <p className="video-subtitle">Dark Mode V3 Screen Recording</p>
+          <p className="video-subtitle">Prototype Walkthrough</p>
           
           <div className="video-container">
             <video 
