@@ -136,7 +136,7 @@ body {
   position: relative;
   width: 500px;
   height: 500px;
-  margin: 0 auto 128px;
+  margin: 0 auto 96px;
 }
 
 .mars-image {
@@ -3917,7 +3917,7 @@ body {
 
 .device-title {
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 400;
   margin-bottom: 1rem;
   color: #fff;
 }
@@ -4443,7 +4443,7 @@ body {
 
 .carousel-title {
   font-size: 2rem;
-  font-weight: 600;
+  font-weight: 400;
   color: #fff;
   margin-bottom: 1.5rem;
   line-height: 1.2;

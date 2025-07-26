@@ -21,7 +21,7 @@ const ResearchPage = () => {
           <Link to="/technical" className={`nav-link ${location.pathname === '/technical' ? 'active' : ''}`}>Technical</Link>
           <Link to="/about" className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`}>About</Link>
         </div>
-        <button className="mobile-menu">
+        <button className="mobile-menu" aria-label="Navigation Menu">
           <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
           </svg>
@@ -72,7 +72,7 @@ const ResearchPage = () => {
               <div className="step-number">2</div>
               <div className="step-content">
                 <p className="step-text">
-                  We brought users to the dashboard from an Apple watch alert and allowed them to navigate through it unmoderated. We recorded their observations, interactions, and questions as they worked through it.
+                  We brought users to the dashboard from an Apple Watch alert and allowed them to navigate through it unmoderated. We recorded their observations, interactions, and questions as they worked through it.
                 </p>
               </div>
             </div>
