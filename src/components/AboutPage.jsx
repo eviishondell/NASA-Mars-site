@@ -137,13 +137,13 @@ const AboutPage = () => {
             ))}
           </div>
         </section>
-        <section className="tech-footer">
+        <footer className="tech-footer">
           <div className="footer-content">
             <p className="footer-text">©2025 NASA x CMU MHCI, Team Olympus</p>
             <img src={nasa} alt="NASA" className="footer-logo" />
             <img src={cmu} alt="CMU" className="footer-logo" />
           </div>
-        </section>
+        </footer>
       </main>
     </div>
   );
