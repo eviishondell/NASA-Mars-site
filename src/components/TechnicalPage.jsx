@@ -33,19 +33,6 @@ const JsonTypingAnimation = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
   const [showFull, setShowFull] = useState(false);
-  const fullRef = useRef(null);
-
-  const parsed = useMemo(() => {
-    try {
-      return JSON.parse(jsonCode);
-    } catch {
-      return null;
-    }
-  }, [jsonCode]);
-
-  const srSummary = parsed
-    ? `Model: ${parsed.model}. Temperature: ${parsed.temperature}. Messages: ${parsed.messages?.length ?? 'unknown'}.`
-    : 'Example API request';
 
   useEffect(() => {
     if (currentIndex < jsonCode.length && !isComplete) {
@@ -60,28 +47,16 @@ const JsonTypingAnimation = () => {
     }
   }, [currentIndex, jsonCode, isComplete]);
 
-  useEffect(() => {
-    if (showFull && fullRef.current) {
-      fullRef.current.focus();
-    }
-  }, [showFull]);
-
   const innerLines =
     displayedText.length > 2
       ? displayedText.slice(1, -1).split('\n').slice(1, -1)
       : [];
 
   return (
-    <div className="json-code-block" role="region" aria-label="Example Claude API request">
-      <div className="visually-hidden" aria-live="polite" aria-atomic="true">
-        {!isComplete
-          ? 'Typing example request…'
-          : `Example request ready. ${srSummary} Use the Read full request button to view JSON.`}
-      </div>
-
-      <div className="code-header" aria-hidden="true">
+    <div className="json-code-block">
+      <div className="code-header">
         <div className="code-window-controls">
-          <div className="code-dots">
+          <div className="code-dots" aria-hidden="true">
             <span className="dot red" />
             <span className="dot yellow" />
             <span className="dot green" />
@@ -93,17 +68,16 @@ const JsonTypingAnimation = () => {
               className="read-full-btn"
               onClick={() => setShowFull((s) => !s)}
               aria-expanded={showFull}
-              aria-controls="full-json"
+              aria-label={showFull ? 'Hide full JSON request' : 'Show full JSON request'}
             >
               {showFull ? 'Hide full request' : 'Read full request'}
             </button>
-            <span className="code-action">×</span>
           </div>
         </div>
       </div>
 
-      <div className="code-editor" aria-hidden="true">
-        <div className="line-numbers">
+      <div className="code-editor" aria-label="Example Claude API request (visual representation)">
+        <div className="line-numbers" aria-hidden="true">
           {displayedText.split('\n').map((_, index) => (
             <span key={index} className="line-number">
               {index + 1}
@@ -146,21 +120,18 @@ const JsonTypingAnimation = () => {
               );
             })}
             <span className="json-brace">{'}'}</span>
-            {!isComplete && <span className="typing-cursor">|</span>}
+            {!isComplete && <span className="typing-cursor" aria-hidden="true">|</span>}
           </code>
         </pre>
       </div>
 
       {showFull && (
-        <pre
-          id="full-json"
-          ref={fullRef}
-          tabIndex={-1}
-          aria-label="Complete example request"
-          className="full-json visually-hidden"
-        >
-          {jsonCode}
-        </pre>
+        <div className="full-json-container">
+          <h3 className="sr-only">Complete API Request JSON</h3>
+          <pre className="full-json">
+            <code>{jsonCode}</code>
+          </pre>
+        </div>
       )}
     </div>
   );
@@ -262,8 +233,17 @@ const TechnicalPage = () => {
           <p className="ai-subtitle">Claude LLM integration for intelligent scenario simulation and telemetry generation</p>
 
           <div className="dashboard-container">
-            <img src={ipadPreview} alt="iPad dashboard interface showing telemetry charts" className="dashboard-image" />
-          </div>
+  <figure className="dashboard-figure">
+    <img 
+      src={ipadPreview} 
+      alt="Mission anomaly response dashboard" 
+      className="dashboard-image" 
+    />
+    <figcaption className="image-caption">
+      iPad dashboard interface showing telemetry charts, alert widgets, and scenario timeline
+    </figcaption>
+  </figure>
+</div>
 
           <div className="ai-integration-details">
             <article className="integration-block" aria-labelledby="int-1">

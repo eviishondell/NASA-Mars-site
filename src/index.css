@@ -9,7 +9,10 @@ html {
   padding: 0;
   box-sizing: border-box;
 }
-
+/* ensure the figure is announced as one unit and caption isn't selectable */
+.mars-figure { outline: none; }
+.mars-caption { -webkit-user-select: none; user-select: none; white-space: normal; }
+.visually-hidden { position: absolute !important; left: -10000px !important; top: auto !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
   background-color: #000;
